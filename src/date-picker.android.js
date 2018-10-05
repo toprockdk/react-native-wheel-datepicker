@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+    paddingHorizontal: 70
   },
 });
 
@@ -43,7 +44,7 @@ export default class DatePicker extends PureComponent {
 
   static defaultProps = {
     labelUnit: { year: '', month: '', date: '' },
-    order: 'D-M-Y',
+    order: 'Y-M-D',
     mode: 'date',
     maximumDate: moment().add(10, 'years').toDate(),
     minimumDate: moment().add(-10, 'years').toDate(),
@@ -74,13 +75,13 @@ export default class DatePicker extends PureComponent {
     const maxYear = maximumDate.getFullYear();
 
     for (let i = 1; i <= 12; i += 1) {
-      this.state.monthRange.push({ value: i, label: `${i}${labelUnit.month}` });
+      this.state.monthRange.push({ value: i, label: `${i}${labelUnit.month} 월` });
     }
 
     this.state.yearRange.push({ value: minYear, label: `${minYear}${labelUnit.year}` });
 
     for (let i = minYear + 1; i <= maxYear; i += 1) {
-      this.state.yearRange.push({ value: i, label: `${i}${labelUnit.year}` });
+      this.state.yearRange.push({ value: i, label: `${i}${labelUnit.year} 년` });
     }
   }
 
@@ -134,7 +135,7 @@ export default class DatePicker extends PureComponent {
     const days = [];
 
     for (let i = 1; i <= dayNum; i += 1) {
-      days.push({ value: i, label: `${i}${this.props.labelUnit.date}` });
+      days.push({ value: i, label: `${i}${this.props.labelUnit.date} 일` });
     }
 
     return days;
