@@ -39,6 +39,7 @@ export default class DatePicker extends PureComponent {
         {...this.props}
         onDateChange={this.onDateChange}
         date={this.state.date}
+        locale={'ko'}
       />
     );
   }
